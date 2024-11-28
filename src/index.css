@@ -28,7 +28,10 @@
 
 }
 
-.card-img-top {
+.card-img-top,
+.movie-info-backdrop-img,
+.tv-show-backdrop-img {
+
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -49,7 +52,7 @@
     min-height: 100%;
     background-color: rgba(0, 0, 0, 0.8);
     color: white;
-    padding: 5px;
+    padding: 10px;
     border-radius: 8px;
     padding-top: 15px;
     display: none;
@@ -64,6 +67,7 @@
 
 h3 {
     margin-bottom: 10px;
+    padding-top: 20px;
 }
 
 p {
