@@ -1,8 +1,9 @@
 import { useContext } from 'react';
 import GlobalContext from '../context/GlobalContext';
 import { IT, US, FR, ES, JP, GB, DE, CN, KR, RU } from 'country-flag-icons/react/3x2'
+import { calculateRating } from './RatingUtilities';
 
-export default function MovieList() {
+export default function MovieList({ }) {
     const { filteredMovies, filteredTvShows } = useContext(GlobalContext);
 
     /* Bandiere per le lingue */
@@ -34,82 +35,90 @@ export default function MovieList() {
     };
 
     return (
-        <div>
+        <div className="movieList bg-dark text-white py-5">
             {/* FILM */}
-            <h2>Film</h2>
-            <div className=" ">
-                <div className="row">
-                    <div className="col-3 d-flex flex-wrap" >
 
 
+            <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+                {filteredMovies.map((movie) => {
+                    const Flag = languageFlag[movie.original_language.toLowerCase()];
+                    const rating = calculateRating(movie.vote_average)
 
-                        {filteredMovies.map((movie) => {
+                    return (
 
-                            const Flag = languageFlag[movie.original_language.toLowerCase()];
-                            const rating = Math.ceil(movie.vote_average / 2)
+                        <div key={movie.id} className="col">
+                            <div className="card bg-dark border-white text-white">
+                                <img
+                                    src={`http://image.tmdb.org/t/p/w500${movie.backdrop_path}`}
+                                    alt={movie.title}
+                                    className="card-img-top img-fluid w-100"
+                                    style={{ maxHeight: '200px', objectFit: 'cover' }}
+                                />
+                                <div className="card-body">
+                                    <h5 className="card-title">{movie.title}</h5>
+                                    <p className="card-text">{movie.original_title}</p>
 
-                            return (
-                                <div key={movie.id}>
-                                    <div>
-                                        <img src={`http://image.tmdb.org/t/p/w500${movie.backdrop_path}`} alt="" />
-                                    </div>
-                                    <h3>{movie.title}</h3>
-                                    <p>{movie.original_title}</p>
-                                    <div style={{}}>
-                                        {Flag ? (
-                                            <Flag
-                                                width={30}
-                                                height={20}
-                                            />
-                                        ) : (
-                                            <span>{movie.original_language}</span>
-                                        )}
+                                    <div className="d-flex align-items-center justify-content-between">
+                                        <div className="d-flex align-items-center">
+                                            {Flag ? (
+                                                <Flag width={30} height={20} className="me-2" />
+                                            ) : (
+                                                <span>{movie.original_language}</span>
+                                            )}
+                                        </div>
 
                                         <div>
-                                            Voto: {rating}
-                                            {renderStars(rating)}
+                                            <span>Voto: {rating}</span>
+                                            <span className='m-3'>{renderStars(rating)}</span>
                                         </div>
                                     </div>
-                                </div >
-                            );
-                        })}
-                    </div>
-                </div>
+                                </div>
+                            </div>
+                        </div>
+                    );
+                })}
             </div>
 
             {/* SERIE TV */}
-            <h2> Serie Tv </h2>
-            <ul>
-                {filteredTvShows.map(tvShow => {
 
+            <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+                {filteredTvShows.map((tvShow) => {
                     const TvShowFlag = languageFlag[tvShow.original_language.toLowerCase()];
-                    const rating = Math.ceil(tvShow.vote_average / 2)
-
+                    const rating = Math.ceil(tvShow.vote_average / 2);
 
                     return (
-                        <li key={tvShow.id}>
-                            <div>
-                                <img src={`http://image.tmdb.org/t/p/w500${tvShow.backdrop_path}`} alt="" />
+                        <div key={tvShow.id} className="col">
+                            <div className="card bg-dark border-white text-white">
+                                <img
+                                    src={`http://image.tmdb.org/t/p/w500${tvShow.backdrop_path}`}
+                                    alt={tvShow.name}
+                                    className="card-img-top img-fluid w-100"
+                                    style={{ maxHeight: '200px', objectFit: 'cover' }}
+                                />
+                                <div className="card-body">
+                                    <h5 className="card-title">{tvShow.name}</h5>
+                                    <p className="card-text">{tvShow.original_name}</p>
+
+                                    <div className="d-flex align-items-center justify-content-between">
+                                        <div className="d-flex align-items-center">
+                                            {TvShowFlag ? (
+                                                <TvShowFlag width={30} height={20} className="me-2" />
+                                            ) : (
+                                                <span>{tvShow.original_language}</span>
+                                            )}
+                                        </div>
+
+                                        <div>
+                                            <span>Voto: {rating}</span>
+                                            <span className='m-3'>{renderStars(rating)}</span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <h3>{tvShow.name}</h3>
-                            <p>{tvShow.original_name}</p>
-                            <div>
-                                {TvShowFlag ? (
-                                    <TvShowFlag
-                                        width={30}
-                                        height={20} />
-                                ) : (
-                                    <span>{tvShow.original_language}</span>
-                                )}
-                            </div>
-                            <div>
-                                Voto: {rating}
-                                {renderStars(rating)}
-                            </div>
-                        </li>
+                        </div>
                     );
                 })}
-            </ul>
-        </div >
+            </div>
+        </div>
     );
 }
