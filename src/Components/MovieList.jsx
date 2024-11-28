@@ -19,6 +19,19 @@ export default function MovieList() {
         'ru': RU
     };
 
+    const renderStars = (rating) => {
+        let stars = [];
+        for (let i = 0; i <= 5; i++) {
+            if (i <= rating) {
+                /* Stella piena */
+                stars.push(<i key={i} className="bi bi-star-fill"></i>);
+            } else {
+                /* Stella vuta */
+                stars.push(<i key={i} className="bi bi-star"></i>);
+            }
+        }
+        return stars;
+    };
 
     return (
         <div>
@@ -46,14 +59,21 @@ export default function MovieList() {
                                 ) : (
                                     <span>{movie.original_language}</span>
                                 )}
-                                <p>Voto: {rating}</p>
+
+                                <div>
+                                    Voto: {rating}
+                                    {renderStars(rating)}
+                                </div>
+
+
+
                             </div>
-                        </li>
+                        </li >
                     );
                 })}
-            </ul>
+            </ul >
             {/* SERIE TV */}
-            <h2>Serie Tv</h2>
+            <h2> Serie Tv </h2>
             <ul>
                 {filteredTvShows.map(tvShow => {
 
@@ -77,7 +97,10 @@ export default function MovieList() {
                                     <span>{tvShow.original_language}</span>
                                 )}
                             </div>
-                            <p>Voto : {rating}</p>
+                            <div>
+                                Voto: {rating}
+                                {renderStars(rating)}
+                            </div>
                         </li>
                     );
                 })}
