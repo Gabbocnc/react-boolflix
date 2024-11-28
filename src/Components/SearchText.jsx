@@ -2,7 +2,8 @@ import React, { useContext } from 'react';
 import GlobalContext from '../context/GlobalContext';
 
 function MovieSearchInput() {
-    const { filterMovies, searchTerm } = useContext(GlobalContext);
+    const { filterMovies, searchTerm, filterTvShows } = useContext(GlobalContext);
+
 
     return (
         <div className="search-input-container">
