@@ -42,10 +42,11 @@ function HomePage() {
 
 
     return (
-        <main className="bg-dark vh-200 text-white">
-            <h1>Popular Movies</h1>
+        <main className="bg-dark p-4 text-white">
+
 
             {/* Carosello per i film */}
+            <h1>Popular Movies</h1>
             <div id="movieCarousel" className="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
                 <div className="carousel-inner">
                     {data.map((movie, index) => {
@@ -91,9 +92,9 @@ function HomePage() {
                 </button>
             </div>
 
-            <h1>Popular TV Shows</h1>
 
             {/* Carosello per i programmi TV */}
+            <h1>Popular TV Shows</h1>
             <div id="tvCarousel" className="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
                 <div className="carousel-inner">
                     {tvData.map((tvShow, index) => {
@@ -143,9 +144,10 @@ function HomePage() {
 
             </div >
 
+
             {/* Carosello per i Popular */}
-            <h1>Popular Movies/TvShow</h1>
-            <div id="topRated" className="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
+            <h1>Top Rated</h1>
+            <div id="topRated" className="carousel slide " data-bs-ride="carousel" data-bs-interval="4000" >
                 <div className="carousel-inner">
                     {popularList.map((tvShow, index) => {
                         const rating = calculateRating(tvShow.vote_average);
