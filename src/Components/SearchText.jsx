@@ -2,7 +2,8 @@ import React, { useContext } from 'react';
 import GlobalContext from '../context/GlobalContext';
 
 function MovieSearchInput() {
-    const { filterMovies, searchTerm, filterTvShows } = useContext(GlobalContext);
+    const { searchText, filterContent } = useContext(GlobalContext);
+
 
 
     return (
@@ -10,8 +11,8 @@ function MovieSearchInput() {
             <input
                 type="text"
                 placeholder="Cerca per titolo..."
-                value={searchTerm}
-                onChange={(e) => filterMovies(e.target.value)}
+                value={searchText}
+                onChange={(e) => filterContent(e.target.value)}
                 className="search-input"
             />
         </div>

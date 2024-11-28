@@ -3,7 +3,7 @@ import GlobalContext from '../context/GlobalContext';
 import { IT, US, FR, ES, JP, GB, DE, CN, KR, RU } from 'country-flag-icons/react/3x2'
 
 export default function MovieList() {
-    const { filteredMovies } = useContext(GlobalContext);
+    const { filteredMovies, filteredTvShows } = useContext(GlobalContext);
 
     /* Bandiere per le lingue */
     const languageFlag = {
@@ -46,6 +46,14 @@ export default function MovieList() {
                         </li>
                     );
                 })}
+            </ul>
+            <h2>Serie Tv</h2>
+            <ul>
+                {filteredTvShows.map(tvShow => (
+                    <li key={tvShow.id}>
+                        {tvShow.name}
+                    </li>
+                ))}
             </ul>
         </div>
     );

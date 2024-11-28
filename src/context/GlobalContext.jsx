@@ -40,21 +40,21 @@ export function GlobalProvider({ children }) {
     }, []);
 
 
-    // Funzione per filtrare i film
-    const filterMovies = (title) => {
+
+    const filterContent = (title) => {
         setsearchText(title);
-        const filtered = movies.filter(movie =>
+
+        // Filtraggio per i film
+        const filteredMovies = movies.filter(movie =>
             movie.title.toLowerCase().includes(title.toLowerCase())
         );
-        setFilteredMovies(filtered);
-    };
-    /* funzione per filtra le serie tv  */
-    const filterTvShows = (title) => {
-        setSearchText(title);
-        const filtered = tvShows.filter(tvShow =>
+        setFilteredMovies(filteredMovies);
+
+        // Filtro per le serie TV
+        const filteredTvShows = tvShows.filter(tvShow =>
             tvShow.name.toLowerCase().includes(title.toLowerCase())
         );
-        setFilteredTvShows(filtered);
+        setFilteredTvShows(filteredTvShows);
     };
 
     return (
@@ -62,13 +62,10 @@ export function GlobalProvider({ children }) {
             value={{
                 movies,
                 tvShows,
-                filteredTvShows,
                 filteredMovies,
+                filteredTvShows,
                 searchText,
-                filterMovies,
-                filterTvShows,
-                setFilteredMovies,
-                setFilteredTvShows
+                filterContent,
             }}
         >
             {children}
