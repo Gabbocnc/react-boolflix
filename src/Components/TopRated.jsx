@@ -9,7 +9,7 @@ export default function TopRated({ data }) {
     };
     return (
         <div id="topRated" className="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
-            <h1>Top Rated</h1>
+            <h1 className='titleCarousel'>Top Rated</h1>
             <div className="carousel-inner">
                 {data.map((tvShow, index) => {
                     const rating = calculateRating(tvShow.vote_average);

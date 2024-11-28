@@ -9,6 +9,7 @@ export default function Movies({ data }) {
 
     return (
         <div id="movieCarousel" className="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
+            <h1 className='titleCarousel'>Film</h1>
             <div className="carousel-inner">
                 {data.map((movie, index) => {
                     const rating = calculateRating(movie.vote_average);

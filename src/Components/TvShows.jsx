@@ -9,6 +9,7 @@ export default function TvShows({ tvData }) {
     };
     return (
         <div id="tvCarousel" className="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
+            <h1 className='titleCarousel'>Tv Shows</h1>
             <div className="carousel-inner">
                 {tvData.map((tvShow, index) => {
                     const rating = calculateRating(tvShow.vote_average);
