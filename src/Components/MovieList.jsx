@@ -21,6 +21,7 @@ export default function MovieList() {
 
     return (
         <div>
+            {/* FILM */}
             <h2>Film Trovati</h2>
             <ul>
                 {filteredMovies.map((movie) => {
@@ -29,6 +30,9 @@ export default function MovieList() {
 
                     return (
                         <li key={movie.id}>
+                            <div>
+                                <img src={`http://image.tmdb.org/t/p/w500${movie.backdrop_path}`} alt="" />
+                            </div>
                             <h3>{movie.title}</h3>
                             <p>{movie.original_title}</p>
                             <div style={{}}>
@@ -36,7 +40,6 @@ export default function MovieList() {
                                     <Flag
                                         width={30}
                                         height={20}
-                                        language={movie.original_language}
                                     />
                                 ) : (
                                     <span>{movie.original_language}</span>
@@ -47,14 +50,33 @@ export default function MovieList() {
                     );
                 })}
             </ul>
+            {/* SERIE TV */}
             <h2>Serie Tv</h2>
             <ul>
-                {filteredTvShows.map(tvShow => (
-                    <li key={tvShow.id}>
-                        {tvShow.name}
-                    </li>
-                ))}
+                {filteredTvShows.map(tvShow => {
+
+                    const TvShowFlag = languageFlag[tvShow.original_language.toLowerCase()];
+
+                    return (
+                        <li key={tvShow.id}>
+                            <div>
+                                <img src={`http://image.tmdb.org/t/p/w500${tvShow.backdrop_path}`} alt="" />
+                            </div>
+                            <h3>{tvShow.name}</h3>
+                            <p>{tvShow.original_name}</p>
+                            <div>
+                                {TvShowFlag ? (
+                                    <TvShowFlag
+                                        width={30}
+                                        height={20} />
+                                ) : (
+                                    <span>{tvShow.original_language}</span>
+                                )}
+                            </div>
+                        </li>
+                    );
+                })}
             </ul>
-        </div>
+        </div >
     );
 }

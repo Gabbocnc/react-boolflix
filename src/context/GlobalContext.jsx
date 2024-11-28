@@ -22,6 +22,7 @@ export function GlobalProvider({ children }) {
         fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=it-IT&page=1&sort_by=popularity.desc', options)
             .then(res => res.json())
             .then(data => {
+                console.log("Film :", data);
                 setMovies(data.results);
                 setFilteredMovies(data.results);
             })
@@ -31,7 +32,7 @@ export function GlobalProvider({ children }) {
         fetch('https://api.themoviedb.org/3/discover/tv?include_adult=false&language=it-IT&page=1&sort_by=popularity.desc', options)
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                console.log('Serie Tv :', data);
                 setTvShows(data.results);
                 setFilteredTvShows(data.results);
             })
