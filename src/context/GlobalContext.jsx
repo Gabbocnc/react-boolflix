@@ -4,6 +4,7 @@ const GlobalContext = createContext();
 
 const MyMovies = ({ children }) => {
     const [movies, setMovies] = useState([]);
+    const [filteredMovies, setFilteredMovies] = useState([]);
 
     /* chiamata ajax per i FILM */
     useEffect(() => {
@@ -15,15 +16,23 @@ const MyMovies = ({ children }) => {
             .then(data => {
                 console.log(data);
                 setMovies(data.results);
+                setFilteredMovies(data.results)
             })
             .catch(err => {
                 console.error("Errore nel recupero dei film:", err);
             });
     }, []);
 
+    /* funzione per cercare i film  */
+    const searchMovies = (searchText) => {
+        const filtered = movies.filter(movie =>
+            searchText === "" || movie.title.toLowerCase().includes(searchText.toLowerCase())
+        );
+        setFilteredMovies(filtered);
+    };
 
     return (
-        <GlobalContext.Provider value={{ movies }}>
+        <GlobalContext.Provider value={{ movies: filteredMovies, searchMovies }}>
             {children}
         </GlobalContext.Provider>
     );
