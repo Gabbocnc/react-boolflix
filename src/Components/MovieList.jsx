@@ -19,6 +19,7 @@ export default function MovieList() {
         'ru': RU
     };
 
+
     return (
         <div>
             {/* FILM */}
@@ -27,6 +28,7 @@ export default function MovieList() {
                 {filteredMovies.map((movie) => {
 
                     const Flag = languageFlag[movie.original_language.toLowerCase()];
+                    const rating = Math.ceil(movie.vote_average / 2)
 
                     return (
                         <li key={movie.id}>
@@ -44,7 +46,7 @@ export default function MovieList() {
                                 ) : (
                                     <span>{movie.original_language}</span>
                                 )}
-                                <p>Voto: {movie.vote_average}</p>
+                                <p>Voto: {rating}</p>
                             </div>
                         </li>
                     );
@@ -56,6 +58,8 @@ export default function MovieList() {
                 {filteredTvShows.map(tvShow => {
 
                     const TvShowFlag = languageFlag[tvShow.original_language.toLowerCase()];
+                    const rating = Math.ceil(tvShow.vote_average / 2)
+
 
                     return (
                         <li key={tvShow.id}>
@@ -73,6 +77,7 @@ export default function MovieList() {
                                     <span>{tvShow.original_language}</span>
                                 )}
                             </div>
+                            <p>Voto : {rating}</p>
                         </li>
                     );
                 })}
