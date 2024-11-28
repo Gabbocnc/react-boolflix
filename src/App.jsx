@@ -1,12 +1,19 @@
-import { useState } from 'react'
+import React from 'react';
+import { GlobalProvider } from './context/GlobalContext'
 import './App.css'
+import MovieList from './Components/MovieList';
+import SearchText from './Components/SearchText';
+
 
 function App() {
-  const [count, setCount] = useState(0)
+
 
   return (
     <>
-
+      <GlobalProvider>
+        <SearchText />
+        <MovieList />
+      </GlobalProvider>
     </>
   )
 }
