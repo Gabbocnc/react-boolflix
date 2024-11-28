@@ -1,19 +1,19 @@
 import { useContext } from 'react';
 import GlobalContext from '../context/GlobalContext';
-import { IT, US, FR, ES, JP, GB, } from 'country-flag-icons/react/3x2'
+/* import { IT, US, FR, ES, JP, GB, } from 'country-flag-icons/react/3x2' */
 
 export default function MovieList() {
 
 
     const { filteredMovies } = useContext(GlobalContext);
-    const languageFlag = {
-        'it': IT,
-        'en': US,
-        'fr': FR,
-        'es': ES,
-        'ja': JP,
-        'gb': GB,
-    };
+    /*   const languageFlag = {
+          'it': IT,
+          'en': US,
+          'fr': FR,
+          'es': ES,
+          'ja': JP,
+          'gb': GB,
+      }; */
 
     return (
         <div>
