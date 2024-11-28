@@ -7,19 +7,13 @@ export function GlobalProvider({ children }) {
     const [tvShows, setTvShows] = useState([])
     const [filteredMovies, setFilteredMovies] = useState([]);
     const [filteredTvShows, setFilteredTvShows] = useState([])
-    const [searchText, setsearchText] = useState("");
-    const options = {
-        method: 'GET',
-        headers: {
-            accept: 'application/json',
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1YzBlNmUzYjM1ZTZjNTRmMTRlY2ZhMjBmYWE3ZGFkYiIsIm5iZiI6MTczMjc4NTg2Mi40OTIxMTg2LCJzdWIiOiI2NzQ4MmRhMDJhYTViN2JkMTRlNTM4ZTUiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.G3bHv0ENl_uA07gs9yQVMmk_vQvuFeg3k5ScloFyQnA'
-        }
-    };
+    const [searchText, setSearchText] = useState("");
 
-
+    const API = '5c0e6e3b35e6c54f14ecfa20faa7dadb'
     useEffect(() => {
+
         /*  Chiamata API per recuperare i film */
-        fetch('https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=it-IT&page=1&sort_by=popularity.desc', options)
+        fetch(`https://api.themoviedb.org/3/search/movie?&api_key=${API}&query=${searchText}`)
             .then(res => res.json())
             .then(data => {
                 console.log("Film :", data);
@@ -29,7 +23,7 @@ export function GlobalProvider({ children }) {
             .catch(err => console.error("Errore nel recupero dei film:", err));
 
         /* Chimata API per le serie TV */
-        fetch('https://api.themoviedb.org/3/discover/tv?include_adult=false&language=it-IT&page=1&sort_by=popularity.desc', options)
+        fetch(`https://api.themoviedb.org/3/search/tv?&api_key=${API}&query=${searchText}`)
             .then(res => res.json())
             .then(data => {
                 console.log('Serie Tv :', data);
@@ -38,24 +32,12 @@ export function GlobalProvider({ children }) {
             })
             .catch(err => console.error("Errore nel recupero delle serie TV:", err));
 
-    }, []);
+    }, [searchText]);
 
 
 
     const filterContent = (title) => {
-        setsearchText(title);
-
-        // Filtraggio per i film
-        const filteredMovies = movies.filter(movie =>
-            movie.title.toLowerCase().includes(title.toLowerCase())
-        );
-        setFilteredMovies(filteredMovies);
-
-        // Filtro per le serie TV
-        const filteredTvShows = tvShows.filter(tvShow =>
-            tvShow.name.toLowerCase().includes(title.toLowerCase())
-        );
-        setFilteredTvShows(filteredTvShows);
+        setSearchText(title)
     };
 
     return (

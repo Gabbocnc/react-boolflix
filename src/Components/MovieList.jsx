@@ -26,7 +26,7 @@ export default function MovieList() {
                 /* Stella piena */
                 stars.push(<i key={i} className="bi bi-star-fill"></i>);
             } else {
-                /* Stella vuta */
+                /* Stella vuota */
                 stars.push(<i key={i} className="bi bi-star"></i>);
             }
         }
@@ -36,39 +36,47 @@ export default function MovieList() {
     return (
         <div>
             {/* FILM */}
-            <h2>Film Trovati</h2>
-            <ul>
-                {filteredMovies.map((movie) => {
+            <h2>Film</h2>
+            <div className=" ">
+                <div className="row">
+                    <div className="col-3 d-flex flex-wrap" >
 
-                    const Flag = languageFlag[movie.original_language.toLowerCase()];
-                    const rating = Math.ceil(movie.vote_average / 2)
 
-                    return (
-                        <li key={movie.id}>
-                            <div>
-                                <img src={`http://image.tmdb.org/t/p/w500${movie.backdrop_path}`} alt="" />
-                            </div>
-                            <h3>{movie.title}</h3>
-                            <p>{movie.original_title}</p>
-                            <div style={{}}>
-                                {Flag ? (
-                                    <Flag
-                                        width={30}
-                                        height={20}
-                                    />
-                                ) : (
-                                    <span>{movie.original_language}</span>
-                                )}
 
-                                <div>
-                                    Voto: {rating}
-                                    {renderStars(rating)}
-                                </div>
-                            </div>
-                        </li >
-                    );
-                })}
-            </ul >
+                        {filteredMovies.map((movie) => {
+
+                            const Flag = languageFlag[movie.original_language.toLowerCase()];
+                            const rating = Math.ceil(movie.vote_average / 2)
+
+                            return (
+                                <div key={movie.id}>
+                                    <div>
+                                        <img src={`http://image.tmdb.org/t/p/w500${movie.backdrop_path}`} alt="" />
+                                    </div>
+                                    <h3>{movie.title}</h3>
+                                    <p>{movie.original_title}</p>
+                                    <div style={{}}>
+                                        {Flag ? (
+                                            <Flag
+                                                width={30}
+                                                height={20}
+                                            />
+                                        ) : (
+                                            <span>{movie.original_language}</span>
+                                        )}
+
+                                        <div>
+                                            Voto: {rating}
+                                            {renderStars(rating)}
+                                        </div>
+                                    </div>
+                                </div >
+                            );
+                        })}
+                    </div>
+                </div>
+            </div>
+
             {/* SERIE TV */}
             <h2> Serie Tv </h2>
             <ul>

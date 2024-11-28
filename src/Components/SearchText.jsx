@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import GlobalContext from '../context/GlobalContext';
 
-function MovieSearchInput() {
+function searchInput() {
     const { searchText, filterContent } = useContext(GlobalContext);
 
 
@@ -19,4 +19,4 @@ function MovieSearchInput() {
     );
 }
 
-export default MovieSearchInput;
+export default searchInput;
