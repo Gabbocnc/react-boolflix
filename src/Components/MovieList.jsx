@@ -64,9 +64,6 @@ export default function MovieList() {
                                     Voto: {rating}
                                     {renderStars(rating)}
                                 </div>
-
-
-
                             </div>
                         </li >
                     );
