@@ -8,6 +8,7 @@ export function GlobalProvider({ children }) {
     const [movies, setMovies] = useState([]);
     const [tvShows, setTvShows] = useState([])
     const [searchText, setSearchText] = useState("");
+    const [videoTrailer, setVideoTrailer] = useState([])
     const API = import.meta.env.VITE_API_KEY
 
 
@@ -33,6 +34,23 @@ export function GlobalProvider({ children }) {
             .catch(err => console.error("Errore nel recupero delle serie TV:", err));
 
     }, [searchText]);
+    /* Chiamata per i Teaser */
+    const fetchTrailer = (id) => {
+        const API = import.meta.env.VITE_API_KEY;
+
+        fetch(`https://api.themoviedb.org/3/movie/${id}/videos?&api_key=${API}`)
+            .then((res) => res.json())
+            .then((data) => {
+                const trailer = data.results.find((video) => video.type === 'Trailer');
+                if (trailer) {
+                    // Aggiorniamo lo stato con il teaser specifico per quel film
+                    setVideoTrailer((prev) => ({ ...prev, [id]: `https://www.youtube.com/embed/${trailer.key}` }));
+                    console.log(setVideoTrailer);
+                }
+            })
+            .catch((err) => console.error("Errore nel recupero del video:", err));
+    };
+
 
     const filterContent = (title) => {
         setSearchText(title)
@@ -44,7 +62,9 @@ export function GlobalProvider({ children }) {
                 movies,
                 tvShows,
                 searchText,
-                filterContent,
+                fetchTrailer,
+                videoTrailer,
+                filterContent
             }}
         >
             {children}

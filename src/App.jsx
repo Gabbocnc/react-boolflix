@@ -1,9 +1,9 @@
 import React from 'react';
 import { GlobalProvider } from './context/GlobalContext'
-import './App.css'
 import MovieList from './Components/MovieList';
 import AppHeader from './Components/AppHeader';
 import HomePage from './Components/HomePage';
+import './App.css'
 
 
 function App() {
@@ -15,7 +15,6 @@ function App() {
         <AppHeader />
         <MovieList />
         <HomePage />
-
       </GlobalProvider>
     </>
   )

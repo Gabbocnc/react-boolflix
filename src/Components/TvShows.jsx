@@ -1,5 +1,5 @@
 import React from 'react';
-import { calculateRating } from './RatingUtilities';  // Assicurati che la funzione `calculateRating` sia disponibile
+import { calculateRating } from './RatingUtilities';
 
 export default function TvShows({ tvData }) {
 
