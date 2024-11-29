@@ -42,14 +42,19 @@ export default function MovieList({ }) {
             fetchTrailer(id);
         }
     };
+
+
     return (
-        <div className="movieList bg-dark text-white py-5">
-            <div className="movieList bg-dark text-white py-5">
+        <div className="movieList bg-dark text-white ov">
+
+            <div className="movieList bg-dark text-white">
+
                 {/* FILM */}
-                <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-2">
+                <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-2 p-3">
                     {movies.map((movie) => {
                         const Flag = languageFlag[movie.original_language.toLowerCase()];
                         const rating = calculateRating(movie.vote_average);
+                        if (!movie.backdrop_path) return null
 
                         return (
                             <div key={movie.id} className="col">
@@ -74,10 +79,13 @@ export default function MovieList({ }) {
                                             style={{ maxHeight: '200px', objectFit: 'cover' }}
                                             onClick={() => handleImageClick(movie.id)}
                                         />
+
                                     )}
+
                                     <div className="card-body">
-                                        <h5 className="card-title">{movie.title}</h5>
+                                        <h5 className="card-title overflow-hidden">{movie.title}</h5>
                                         <p className="card-text">{movie.original_title}</p>
+                                        <p> Type : Film</p>
                                         <div className="d-flex align-items-center justify-content-between">
                                             <div className="d-flex align-items-center">
                                                 {Flag ? (
@@ -92,6 +100,7 @@ export default function MovieList({ }) {
                                             </div>
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
                         );
@@ -100,13 +109,15 @@ export default function MovieList({ }) {
             </div>
             {/* SERIE TV */}
 
-            <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+            <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 p-3 tvshows ">
                 {tvShows.map((tvShow) => {
                     const TvShowFlag = languageFlag[tvShow.original_language.toLowerCase()];
                     const rating = Math.ceil(tvShow.vote_average / 2);
+                    if (!tvShow.backdrop_path) return null
 
                     return (
-                        <div key={tvShow.id} className="col">
+                        <div key={tvShow.id} className="col" >
+
                             <div className="card bg-dark border-white text-white">
                                 <img
                                     src={`http://image.tmdb.org/t/p/w500${tvShow.backdrop_path}`}
@@ -115,8 +126,9 @@ export default function MovieList({ }) {
                                     style={{ maxHeight: '200px', objectFit: 'cover' }}
                                 />
                                 <div className="card-body">
-                                    <h5 className="card-title">{tvShow.name}</h5>
+                                    <h5 className="card-title overflow-hidden">{tvShow.name}</h5>
                                     <p className="card-text">{tvShow.original_name}</p>
+                                    <p> Type : ShowTv</p>
 
                                     <div className="d-flex align-items-center justify-content-between">
                                         <div className="d-flex align-items-center">
@@ -138,6 +150,6 @@ export default function MovieList({ }) {
                     );
                 })}
             </div>
-        </div>
+        </div >
     );
 }

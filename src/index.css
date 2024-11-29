@@ -2,6 +2,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+.logo {
+    width: 20%;
 }
 
 img {
@@ -20,6 +26,7 @@ img {
 .titleCarousel {
     margin-bottom: 50px;
     margin-top: 30px;
+    font-weight: bold;
 
 }
 
@@ -32,9 +39,8 @@ img {
     transition: transform 0.3s ease;
     cursor: pointer;
     border-radius: 10px;
-    background-color: #333;
+    background-color: black;
     overflow: hidden;
-
 }
 
 
@@ -79,6 +85,7 @@ img {
 h3 {
     margin-bottom: 10px;
     padding-top: 20px;
+    overflow: hidden;
 }
 
 p {
@@ -95,11 +102,14 @@ p {
 .carousel-control-next {
     top: 50%;
     transform: translateY(0) translateX(100px);
+
 }
 
 .carousel-control-next-icon,
 .carousel-control-prev-icon {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 1);
+    overflow: hidden;
+
 }
 
 .video-container {
@@ -121,13 +131,13 @@ p {
     height: 100%;
     border: none;
     border-radius: 8px;
+
 }
 
 .search-input {
-    background-color: rgb(255, 0, 0);
+    background-color: red;
     border-radius: 10px;
     text-align: center;
-    color: black;
     font-size: 20px;
     font-weight: bold;
     padding: 4px;
@@ -151,4 +161,25 @@ p {
         left: 40px;
         top: 7px;
     }
+}
+
+
+main,
+.movieList {
+    background-image: url(https://dnm.nflximg.net/api/v6/BvVbc2Wxr2w6QuoANoSpJKEIWjQ/AAAAQdHbjrX0uL1mH7uUW7VZ-p5GJOSNNRko_9A_12Mlv5wVYQIDy4nuupxLHxkDj9V0e1OLBs_s8ZlxFkyhPlK5XkrlTK0c7yP42LLinQdYhz8lqfgUcOH68JAbEcY45jG02gCI1NyKVf1lqxsQFmcNN5szbv8.jpg?r=aee);
+    background-size: cover;
+
+}
+
+.appHeader {
+    background-color: black;
+}
+
+.movieList,
+.titleCarousel {
+    overflow: hidden;
+}
+
+.homePage {
+    margin-top: -50px;
 }

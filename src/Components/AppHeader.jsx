@@ -1,13 +1,18 @@
 import SearchInput from '../Components/SearchText';
-export default function AppHeader() {
 
+export default function AppHeader() {
     return (
         <header>
-            <div className='bg-dark d-flex justify-content-between p-4 align-items-center'>
-                <img src='../public/img/gabboflix.png' alt="" />
+            <div className='d-flex justify-content-between p-4 align-items-center appHeader'>
+                <img
+                    className='logo'
+                    src='../public/img/gabboflix.png'
+                    alt=""
+                />
                 <SearchInput />
             </div>
         </header>
 
     )
 }
+

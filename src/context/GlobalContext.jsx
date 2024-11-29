@@ -34,6 +34,7 @@ export function GlobalProvider({ children }) {
             .catch(err => console.error("Errore nel recupero delle serie TV:", err));
 
     }, [searchText]);
+
     /* Chiamata per i Teaser */
     const fetchTrailer = (id) => {
         const API = import.meta.env.VITE_API_KEY;
@@ -43,7 +44,6 @@ export function GlobalProvider({ children }) {
             .then((data) => {
                 const trailer = data.results.find((video) => video.type === 'Trailer');
                 if (trailer) {
-                    // Aggiorniamo lo stato con il teaser specifico per quel film
                     setVideoTrailer((prev) => ({ ...prev, [id]: `https://www.youtube.com/embed/${trailer.key}` }));
                     console.log(setVideoTrailer);
                 }

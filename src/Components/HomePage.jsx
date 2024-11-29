@@ -18,14 +18,17 @@ function HomePage() {
 
 
     useEffect(() => {
+        /* chimata per trendingWeek film  */
         fetch('https://api.themoviedb.org/3/trending/movie/week?language=en-US', options)
             .then(response => response.json())
             .then(data => setData(data.results))
 
+        /* chimata per popular tvShows */
         fetch('https://api.themoviedb.org/3/tv/popular', options)
             .then(response => response.json())
             .then(data => setTvData(data.results))
 
+        /* chimata per i topRated */
         fetch('https://api.themoviedb.org/3/tv/top_rated?language=en-US&page=1', options)
             .then(response => response.json())
             .then(data => setPopularList(data.results))
@@ -35,7 +38,7 @@ function HomePage() {
     }, []);
 
     return (
-        <main className="bg-dark p-4 text-white">
+        <main className="bg-dark p-4 text-white homePage">
 
 
             {/* Carosello per i film */}
