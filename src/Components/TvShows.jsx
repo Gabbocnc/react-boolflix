@@ -17,7 +17,7 @@ export default function TvShows({ tvData }) {
                     return (
                         <div key={index} className={`carousel-item ${isActive}`}>
                             <div className="movie-carousel">
-                                {tvData.slice(index, index + 5).map((tvItem) => (
+                                {tvData.slice(index, index + 10).map((tvItem) => (
                                     <div
                                         key={tvItem.id}
                                         className="movie-card"

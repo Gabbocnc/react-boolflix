@@ -17,7 +17,7 @@ export default function TopRated({ data }) {
                     return (
                         <div key={index} className={`carousel-item ${isActive}`}>
                             <div className="movie-carousel">
-                                {data.slice(index, index + 5).map((tvItem) => (
+                                {data.slice(index, index + 10).map((tvItem) => (
                                     <div
                                         key={tvItem.id}
                                         className="movie-card"

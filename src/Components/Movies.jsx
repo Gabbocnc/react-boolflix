@@ -17,7 +17,7 @@ export default function Movies({ data }) {
                     return (
                         <div key={index} className={`carousel-item ${isActive}`}>
                             <div className="movie-carousel">
-                                {data.slice(index, index + 5).map((movieItem) => (
+                                {data.slice(index, index + 10).map((movieItem) => (
                                     <div
                                         key={movieItem.id}
                                         className="movie-card"
