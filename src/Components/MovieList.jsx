@@ -44,12 +44,9 @@ export default function MovieList({ }) {
     };
     return (
         <div className="movieList bg-dark text-white py-5">
-            {/* FILM */}
-
-
             <div className="movieList bg-dark text-white py-5">
                 {/* FILM */}
-                <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+                <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-2">
                     {movies.map((movie) => {
                         const Flag = languageFlag[movie.original_language.toLowerCase()];
                         const rating = calculateRating(movie.vote_average);

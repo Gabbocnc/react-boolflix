@@ -14,7 +14,9 @@ function searchInput() {
                 value={searchText}
                 onChange={(e) => filterContent(e.target.value)}
                 className="search-input"
+
             />
+            <i className="bi bi-search"></i>
         </div>
     );
 }

@@ -46,6 +46,7 @@ img {
     height: 100%;
     object-fit: cover;
     transition: transform 0.5s ease;
+
 }
 
 
@@ -120,4 +121,34 @@ p {
     height: 100%;
     border: none;
     border-radius: 8px;
+}
+
+.search-input {
+    background-color: rgb(255, 0, 0);
+    border-radius: 10px;
+    text-align: center;
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 4px;
+
+}
+
+
+.search-input::placeholder {
+    color: black;
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.search-input-container {
+    position: relative;
+
+    i {
+        position: absolute;
+        color: black;
+        font-size: 20px;
+        left: 40px;
+        top: 7px;
+    }
 }

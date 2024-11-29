@@ -7,6 +7,7 @@ export default function TvShows({ tvData }) {
         const card = e.currentTarget;
         card.classList.toggle('flipped');
     };
+
     return (
         <div id="tvCarousel" className="carousel slide" data-bs-ride="carousel" data-bs-interval="4000">
             <h1 className='titleCarousel'>Tv Shows</h1>
