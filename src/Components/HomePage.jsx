@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { calculateRating } from "./RatingUtilities";
 import TopRated from "./TopRated"
 import Movies from "./Movies";
 import TvShows from "./TvShows";

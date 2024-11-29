@@ -4,7 +4,7 @@ import { IT, US, FR, ES, JP, GB, DE, CN, KR, RU } from 'country-flag-icons/react
 import { calculateRating } from './RatingUtilities';
 
 export default function MovieList({ }) {
-    const { filteredMovies, filteredTvShows } = useContext(GlobalContext);
+    const { movies, tvShows } = useContext(GlobalContext);
 
     /* Bandiere per le lingue */
     const languageFlag = {
@@ -40,7 +40,7 @@ export default function MovieList({ }) {
 
 
             <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
-                {filteredMovies.map((movie) => {
+                {movies.map((movie) => {
                     const Flag = languageFlag[movie.original_language.toLowerCase()];
                     const rating = calculateRating(movie.vote_average)
 
@@ -82,7 +82,7 @@ export default function MovieList({ }) {
             {/* SERIE TV */}
 
             <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
-                {filteredTvShows.map((tvShow) => {
+                {tvShows.map((tvShow) => {
                     const TvShowFlag = languageFlag[tvShow.original_language.toLowerCase()];
                     const rating = Math.ceil(tvShow.vote_average / 2);
 
