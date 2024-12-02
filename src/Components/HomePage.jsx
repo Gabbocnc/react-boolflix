@@ -2,10 +2,14 @@ import { useEffect, useState } from "react";
 import TopRated from "./TopRated"
 import Movies from "./Movies";
 import TvShows from "./TvShows";
+import Carousel from './CarouselCard';
+
 function HomePage() {
     const [data, setData] = useState([])
     const [tvData, setTvData] = useState([])
     const [popularList, setPopularList] = useState([])
+    const API = import.meta.env.VITE_API_KEY
+    const BEARER = import.meta.env.BEARER
 
 
     const options = {
@@ -39,20 +43,15 @@ function HomePage() {
 
     return (
         <main className="bg-dark p-4 text-white homePage">
-
-
             {/* Carosello per i film */}
-            <Movies data={data} />
-
+            <Carousel data={data} title="Movies" id="movieCarousel" isMovie={true} />
 
             {/* Carosello per le serie TV */}
-            <TvShows tvData={tvData} />
-
+            <Carousel data={tvData} title="TV Shows" id="tvShowsCarousel" isMovie={false} />
 
             {/* Carosello per i Popular */}
-            <TopRated data={popularList} />
-
-        </main >
+            <Carousel data={popularList} title="Top Rated" id="topRatedCarousel" isMovie={false} />
+        </main>
     );
 }
 

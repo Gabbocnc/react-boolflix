@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
 import GlobalContext from '../context/GlobalContext';
 import { IT, US, FR, ES, JP, GB, DE, CN, KR, RU } from 'country-flag-icons/react/3x2'
-import { calculateRating } from './RatingUtilities';
+import { calculateRating } from '../Utilities/RatingUtilities';
 
 export default function MovieList({ }) {
     const { movies, tvShows, fetchTrailer, videoTrailer } = useContext(GlobalContext);
