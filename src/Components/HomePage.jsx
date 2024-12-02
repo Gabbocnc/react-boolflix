@@ -9,14 +9,14 @@ function HomePage() {
     const [tvData, setTvData] = useState([])
     const [popularList, setPopularList] = useState([])
     const API = import.meta.env.VITE_API_KEY
-    const BEARER = import.meta.env.BEARER
+    const BEARER = import.meta.env.VITE_BEARER
 
 
     const options = {
         method: 'GET',
         headers: {
             accept: 'application/json',
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1YzBlNmUzYjM1ZTZjNTRmMTRlY2ZhMjBmYWE3ZGFkYiIsIm5iZiI6MTczMjc4NTg2Mi40OTIxMTg2LCJzdWIiOiI2NzQ4MmRhMDJhYTViN2JkMTRlNTM4ZTUiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.G3bHv0ENl_uA07gs9yQVMmk_vQvuFeg3k5ScloFyQnA'
+            Authorization: BEARER
         }
     };
 
